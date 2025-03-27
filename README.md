@@ -5,4 +5,4 @@ script.js - The logic written by me
 <br>
 oscript.js - Same logic but an optimized version using AI
 <br>
-nscript.js -  Bugs from oscript.js fixed and it si the final script
+nscript.js -  Bugs from oscript.js fixed and it is the final script
