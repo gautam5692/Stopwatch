@@ -1,0 +1,177 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(
+    to bottom right,
+    purple,
+    rgb(4, 141, 134),
+    rgb(176, 8, 176)
+  );
+  max-height: 100vh;
+}
+
+#main-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+}
+
+#stopwatch-container {
+  height: 70vh;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(128 0 128 / 44%);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgb(128 0 128 / 44%);
+}
+
+.time {
+  font-size: 50px;
+  text-align: center;
+  color: aliceblue;
+  display: flex;
+}
+
+.time .units {
+  font-size: 10px;
+}
+
+.time div {
+  display: flex;
+  flex-direction: column;
+}
+
+#btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  align-items: center;
+}
+
+button {
+  width: 200px;
+  cursor: pointer;
+  background-color: rgb(44 0 58 / 37%);
+  padding: 10px 20px;
+  color: aliceblue;
+  border-radius: 10px;
+  border: none;
+}
+
+/* Initial position: Buttons start hidden behind the stop button */
+.btn-hidden {
+  position: absolute;
+  transform: translateX(0);
+  opacity: 0;
+  pointer-events: none; /* Prevent interactions while hidden */
+}
+
+.btn-hidden,
+.btn-animation,
+.stopwatch-animation {
+  will-change: transform, opacity;
+}
+
+/* Animation for sliding to the right */
+.slide-in-right {
+  animation: slide-in-right 0.5s ease forwards;
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(-80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(60px); /* Adjust based on spacing */
+    opacity: 1;
+  }
+}
+
+/* Animation for sliding to the left */
+.slide-in-left {
+  animation: slide-in-left 0.5s ease forwards;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-60px); /* Adjust based on spacing */
+    opacity: 1;
+  }
+}
+
+.stopwatch-animation {
+  animation: sw-c-animation 0.5s ease forwards;
+}
+
+@keyframes sw-c-animation {
+  0% {
+    width: 70vw;
+    transform: translateX(0);
+  }
+  100% {
+    width: 60vw;
+    transform: translateX(-10px); /* Creates smooth motion */
+  }
+}
+
+.btn-animation {
+  animation: btn-animation 0.5s ease forwards;
+}
+
+@keyframes btn-animation {
+  0% {
+    width: 200px;
+  }
+  100% {
+    width: 100px;
+  }
+}
+
+#counter-time-container {
+  height: 70vh;
+  width: 25vw;
+  overflow: auto;
+}
+
+.counter-time {
+  padding: 5px;
+  background-color: #ffffff17;
+  /* box-shadow: 0 0 10px #e1e1e15c; */
+  color: white;
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
+
+/* For Webkit browsers (e.g., Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the thumb */
+  border-radius: 6px; /* Roundness of the thumb */
+  border: 3px solid transparent; /* Optional: space around the thumb */
+  background-clip: content-box; /* Ensures the border spacing looks good */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color on hover for better interactivity */
+}
